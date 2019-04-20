@@ -14,7 +14,7 @@ let games = [
 		id: 2,
 		title: 'Arena of Valor',
 		genre: 'MOBA',
-		releaseyear: 2017
+		releaseYear: 2017
 	}
 ]
 
