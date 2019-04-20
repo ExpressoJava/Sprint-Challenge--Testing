@@ -54,5 +54,21 @@ describe('server.js', () => {
 				})
 			expect(res.status).toBe(405)
 		})
+
+		it('should return a status code of 404 if game is not found', async () => {
+			const response = await request(server).get('/games/100')
+			expect(response.status).toBe(404)
+		})
+	})
+
+	describe('DELETE /games/:id', () => {
+		it('should return status code 404 if game not found', async () => {
+			const res = await request(server).delete('/games/55')
+			expect(res.status).toBe(404)
+		})
+		it('return status code of 200 if game successfully deleted', async () => {
+			const res = await request(server).delete('/games/2')
+			expect(res.status).toBe(200)
+		})
 	})
 })

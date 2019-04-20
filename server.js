@@ -58,6 +58,16 @@ server.get('/games/:id', (req, res) => {
 server.delete('/games/:id', (req, res) => {
 	const { id } = req.params
 	initialLen = games.length
+	games = games.filter(game => {
+		return Number(game.id) !== Number(id)
+	})
+	const postLen = games.length
+	const diff = initialLen - postLen
+	if (diff > 0) {
+		res.status(200).json({ message: 'game successfully deleted' })
+	} else {
+		res.status(404).json({ message: 'Game does not exist' })
+	}
 })
 
 module.exports = server
