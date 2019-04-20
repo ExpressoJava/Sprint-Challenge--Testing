@@ -51,8 +51,13 @@ server.get('/games/:id', (req, res) => {
 	if (game.length > 0) {
 		res.status(200).json(game)
 	} else {
-		res.status(404).jsn({ message: 'This game does not exist' })
+		res.status(404).json({ message: 'This game does not exist' })
 	}
+})
+
+server.delete('/games/:id', (req, res) => {
+	const { id } = req.params
+	initialLen = games.length
 })
 
 module.exports = server
